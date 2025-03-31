@@ -25,7 +25,7 @@ int main (int argc, char** argv) {
                     index += 1;
                 }
             }
-            if (argv[index + 1] != NULL) {
+            if (argv[index + 1] != NULL && nb_files == 0) {
                 printf("%s : \n", argv[index]);
             }
             if (nb_files > 0) {
