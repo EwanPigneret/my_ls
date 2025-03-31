@@ -1,6 +1,12 @@
 #include "my_ls.h"
 
-int compare_modification(listnode* current, listnode* next) {  // check which of 2 given files/ directory as been modified first
+/**
+ * @summary Check which of 2 given files/directory as been modified first
+ * @param listnode* current, listnode* next - Node that is compared to the next one
+ * @return -1 if current has been modified first, 1 if the next one as been modified first
+ */
+
+int compare_modification(listnode* current, listnode* next) {
     struct stat* stat_current;
     stat_current = (struct stat*) my_malloc("stat_current", sizeof(struct stat));
     struct stat* stat_next;
