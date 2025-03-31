@@ -1,6 +1,11 @@
 #include "my_ls.h"
 
-void print_linked_list(listnode* head) { // print a linked list 
+/**
+ * @summary Print a linked list
+ * @param listnode* head - Head of the printed linked list
+ */
+
+void print_linked_list(listnode* head) {
     listnode* current = head;
     while (current != NULL) {
         if (strcmp(current->name, "")) {
@@ -8,4 +13,4 @@ void print_linked_list(listnode* head) { // print a linked list
         }
         current = current->next;
     }
-}   
+}
