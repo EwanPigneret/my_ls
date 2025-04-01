@@ -34,4 +34,3 @@ void print_folder(listnode*, int);
 void print_file(char*, int);
 void print_linked_list(listnode*);
 listnode* sort_folder(listnode*, int);
-
