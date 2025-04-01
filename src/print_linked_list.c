@@ -1,8 +1,8 @@
 #include "my_ls.h"
 
 /**
- * @summary print a linked list 
- * @param listnode* head - Head of linked list that is printed
+ * @summary Print a linked list
+ * @param listnode* head - Head of the printed linked list
  */
 
 void print_linked_list(listnode* head) {
@@ -13,4 +13,4 @@ void print_linked_list(listnode* head) {
         }
         current = current->next;
     }
-}   
+}

@@ -14,7 +14,7 @@ listnode* add_node(listnode* head, listnode* node, int (*cmp_func)(listnode*, li
         current = current->next;
     }
     if (current->next != NULL) {  // check if the function wasn't used incorrectly
-            newnode = (listnode*) my_malloc("newnode", sizeof(listnode));
+        newnode = (listnode*) my_malloc("newnode", sizeof(listnode));
         newnode->name = node->name;
         tempnode = current->next;
         current->next = newnode;

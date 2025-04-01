@@ -13,7 +13,7 @@ TODO - How to install your project? npm install? make? make re?
 ## Usage
 TODO - How does it work?
 ```
-./my_project argument1 argument2
+./my_ls -flags file (flags and file are optional)
 ```
 
 ### The Core Team
