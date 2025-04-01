@@ -26,13 +26,15 @@ int main (int argc, char** argv) {
                     index += 1;
                 }
             }
-            if (head_folders->name == NULL) {
-                head_folders = init_head(argv[index]);
+            if (index < argc) {
+                if (head_folders->name == NULL) {
+                    head_folders = init_head(argv[index]);
+                }
+                else {
+                    insert_element(head_folders, argv[index]);
+                }
+                index += 1;
             }
-            else {
-                insert_element(head_folders, argv[index]);
-            }
-            index += 1;
         }
         if (head_folders->name != NULL) {
             print_folder(head_folders, detect_flag(flag));
