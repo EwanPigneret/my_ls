@@ -1,5 +1,11 @@
 #include "my_ls.h"
 
+/**
+ * @summary Add a new node to a certain place in a linked list. The place is determined by the function of comparison given as a parameter
+ * @param listnode* head, char* name, int (*cmp_func)(listnode*, listnode*) - Head of the linked list, name of the new node, function of comparison
+ * @return The head of the modified list
+ */
+
 listnode* add_node(listnode* head, listnode* node, int (*cmp_func)(listnode*, listnode*)) {  // add a node in the middle of a linked list
     listnode* current = head;
     listnode* newnode = NULL;

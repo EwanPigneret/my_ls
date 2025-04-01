@@ -1,6 +1,12 @@
 #include "my_ls.h"
 
-listnode* add_end(listnode* head, char* name) {  // add a new node to a linked list
+/**
+ * @summary Add a new node to the end of a linked list
+ * @param listnode* head, char* name - Head of the linked list, name of the new node
+ * @return The head of the modified list
+ */
+
+listnode* add_end(listnode* head, char* name) {
     listnode* current = head;
     listnode* newnode = NULL;
     while (current->next != NULL) {

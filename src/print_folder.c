@@ -1,29 +1,29 @@
-#include "my_ls.h"
+#include <my_ls.h>
 
-listnode* print_folder(char* directory, int flag) {  // create a linked list with all the next folders and files from a directory
-    listnode* head = (listnode*) my_malloc("head", sizeof(listnode));
-    DIR* folder = opendir(directory);
-    struct dirent* entry = readdir(folder);
-    while (entry != NULL) {
-        if (strcmp(entry->d_name, "")) {  // directory name isn't null
-            if (flag % 2 == 0) {  // code not compiled with -a
-                if (entry->d_name[0] != '.') {
-                    head = insert_element(head, entry->d_name);
-                }
-            } 
-            else {  //  code compiled with -a
-                head = insert_element(head, entry->d_name);
+/**
+ * @summary Sort a linked list containing all the folders and call print_file to print their content 
+ * @param listnode* head_folder, int flag - Head of the linked list with the folders, converted value of the flags
+ */
+
+void print_folder(listnode* head_folder, int flag) {
+    head_folder = sort_folder(head_folder, flag);
+    listnode* current = head_folder;
+    int nb_files = 0;
+    if (linked_list_length(head_folder) > 1) {
+        while (current != NULL) {
+            if(nb_files > 0) {
+                printf("\n");
             }
+            printf("%s:\n", current->name);
+            print_file(current->name, flag);
+            nb_files += 1;
+            current = current->next;
         }
-        entry = readdir(folder);
     }
-    if (flag / 2 == 1) {  // code compiled with -t
-        head = linked_list_sort(head, compare_modification);
+    else {
+        while (current != NULL) {
+            print_file(current->name, flag);
+            current = current->next;
+        }
     }
-    else {  // code not compiled with -t
-        head = linked_list_sort(head, compare_letter);
-    }
-    print_linked_list(head);
-    closedir(folder);
-    return head;
 }

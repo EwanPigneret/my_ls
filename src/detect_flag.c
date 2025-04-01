@@ -1,31 +1,26 @@
 #include "my_ls.h"
 
-void detect_flag(char* flags, char* file) {  // detect which flag was used
+/**
+ * @summary detect which flag was used
+ * @param char* flags - String where the flags are stored
+ * @result The value of the flags converted into an int
+ */
+
+int detect_flag(char* flags) {
     if (!strcmp(flags, "-a")) {  // flag -a
-        if(file != NULL) {  // my_ls is compiled with a file
-            print_folder(file, 1);
-        }
-        else {  // define the folder "." as the default directory
-            print_folder(".", 1);
-        }
+        return 1;
     }
     else if (!strcmp(flags, "-t")) {  // flag -t
-        if(file != NULL) {  // my_ls is compiled with a file
-            print_folder(file, 2);
-        }
-        else {  // define the folder "." as the default directory
-            print_folder(".", 2);
-        }
+        return 2;
     }
     else if (!strcmp(flags, "-at") || !strcmp(flags, "-ta")) {  // flag -at
-        if(file != NULL) {  // my_ls is compiled with a file
-            print_folder(file, 3);
-        }
-        else {  // define the folder "." as the default directory
-            print_folder(".", 3);
-        }
+        return 3;
+    }
+    else if (!strcmp(flags, "")) {
+        return 0;
     }
     else {  // the flag used isn't valid
         printf("Error, flag invalid : %s\n", flags);
+        return -1;
     }
 }
