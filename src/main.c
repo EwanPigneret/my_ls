@@ -1,17 +1,18 @@
 #include "my_ls.h"
 
 /**
- * @summary
+ * @summary 
  * @param
  * @return
  */
 
 int main (int argc, char** argv) {
-    int index = 1;
-    int nb_files = 0;
+    listnode* head_folders = (listnode*) my_malloc("head_folders", sizeof(listnode));
     char* flag = my_malloc("flag", sizeof(char) * 3);
+    int index = 1;
+    int val_flag = 0;
     if (argc == 1) {  //./my_ls
-        print_folder(".", 0);
+        print_file(".", 0);
     }
     else { 
         while (index < argc) {  // go throught all the arguments
@@ -25,21 +26,20 @@ int main (int argc, char** argv) {
                     index += 1;
                 }
             }
-            if (argv[index + 1] != NULL && nb_files == 0) {
-                printf("%s : \n", argv[index]);
+            if (head_folders->name == NULL) {
+                head_folders = init_head(argv[index]);
             }
-            if (nb_files > 0) {
-                printf("%s : \n", argv[index]);
-            }
-            if (strcmp(flag, "\0")) {  // if a flag is given
-                detect_flag(flag, argv[index]);
-                nb_files += 1;
-            }
-            else {  // execute the rest of the code with the current file
-                print_folder(argv[index], 0);
-                nb_files += 1;
+            else {
+                insert_element(head_folders, argv[index]);
             }
             index += 1;
+        }
+        if (head_folders->name != NULL) {
+            print_folder(head_folders, detect_flag(flag));
+        }
+        else {
+            val_flag = detect_flag(flag);
+            print_file(".", val_flag);
         }
     }
 }
