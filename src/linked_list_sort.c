@@ -1,7 +1,16 @@
 #include "my_ls.h"
 
+/**
+ * @summary 
+ * @param 
+ * @result 
+ */
+
 listnode* linked_list_sort(listnode* head, int (*cmp_func)(listnode*, listnode*)) {
-    listnode* current = head->next;
+    listnode* current = head;
+    if (current->name[0] == 0) {
+        current = current->next;
+    }
     listnode* new_head = NULL;
     listnode* new_current = new_head;
     new_head = init_head(current->name);  // initialise the first element of the list
@@ -22,9 +31,8 @@ listnode* linked_list_sort(listnode* head, int (*cmp_func)(listnode*, listnode*)
                 }
                 else {  // the element should be added in the middle of the list
                     new_head = add_node(new_head, current, cmp_func);
-                }
+                }  
             }
-            
         }
         new_current = new_head;
         current = current->next;
