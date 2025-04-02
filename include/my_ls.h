@@ -26,7 +26,7 @@ int detect_flag(char*);
 listnode* init_head(char*);
 listnode* insert_element(listnode*, char*);
 int linked_list_length(listnode*);
-listnode* linked_list_sort (listnode*, int (*cmp_func) (listnode*, listnode*));
+listnode* linked_list_sort(listnode*, int (*cmp_func) (listnode*, listnode*));
 int main(int, char**);
 void* my_malloc(char*, size_t);
 int my_strlen(char*);
