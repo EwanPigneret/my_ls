@@ -6,10 +6,12 @@
  * @result Length of the linked list
  */
 
-int linked_list_length(listnode* head) {
-    listnode* current = head;
+int linked_list_length(listnode* head)
+{
     int length = 0;
-    while (current != NULL) {
+    listnode* current = head;
+    while (current != NULL)
+    {
         length += 1;
         current = current->next;
     }

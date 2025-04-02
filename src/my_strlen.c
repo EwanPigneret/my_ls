@@ -6,9 +6,11 @@
  * @return The length of the string
  */
 
-int my_strlen (char* string) {
+int my_strlen(char* string)
+{
     int size = 1;
-    while (string[size] != '\0') {
+    while (string[size] != '\0')
+    {
         size += 1;
     }
     return size;
