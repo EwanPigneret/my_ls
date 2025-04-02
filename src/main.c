@@ -38,6 +38,7 @@ int main(int argc, char** argv)
                     index += 1;
                 }
             }
+<<<<<<< HEAD
             // checks if the last argument wasn't a flag
             if (index < argc)
             {
@@ -48,6 +49,13 @@ int main(int argc, char** argv)
                 }
                 else
                 {
+=======
+            if (index < argc) {
+                if (head_folders->name == NULL) {
+                    head_folders = init_head(argv[index]);
+                }
+                else {
+>>>>>>> 40784683fef955cbc1ed7e2f2e94b2c8ce2014de
                     insert_element(head_folders, argv[index]);
                 }
                 index += 1;
