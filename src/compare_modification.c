@@ -10,28 +10,13 @@
 
 int compare_modification(listnode* current, listnode* next)
 {
-    struct stat* stat_current;
-    stat_current = (struct stat*)my_malloc("stat_current", sizeof(struct stat));
-    struct stat* stat_next;
-    stat_next = (struct stat*)my_malloc("stat_next", sizeof(struct stat));
-    // check if the initialisation failed
-    if (stat(current->name, stat_current) == -1)
-    {
-        perror("stat current");
-        exit(EXIT_FAILURE);
-    }
-    if (stat(next->name, stat_next) == -1)
-    {
-        perror("stat next");
-        exit(EXIT_FAILURE);
-    }
     // return which one has been modified first between the 2
-    if (stat_current->st_mtime < stat_next->st_mtime)
+    if (current->last_modif < next->last_modif)
     {
         return 1;
     }
     // if they are equals sort the by alphabetical order
-    else if (stat_current->st_mtime == stat_next->st_mtime)
+    else if (current->last_modif == next->last_modif)
     {
         return compare_letter(current, next);
     }

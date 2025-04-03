@@ -1,6 +1,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dirent.h>
+#include <unistd.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,6 +13,7 @@
 typedef struct s_listnode
 {
     char* name;
+    long last_modif;
     struct s_listnode* next;
 } listnode;
 #endif
@@ -22,11 +24,12 @@ listnode* add_node(listnode*, listnode*, int (*cmp_func)(listnode*, listnode*));
 char* binary_to_text(int);
 int compare_letter(listnode*, listnode*);
 int compare_modification(listnode*, listnode*);
+char* concatenation_string(char*, char*);
 int detect_flag(char*);
 listnode* init_head(char*);
 listnode* insert_element(listnode*, char*);
 int linked_list_length(listnode*);
-listnode* linked_list_sort (listnode*, int (*cmp_func) (listnode*, listnode*));
+listnode* linked_list_sort(listnode*, int (*cmp_func) (listnode*, listnode*));
 int main(int, char**);
 void* my_malloc(char*, size_t);
 int my_strlen(char*);
