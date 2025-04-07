@@ -7,7 +7,7 @@
  * @result Returns the modified linked list
  */
 
-listnode* linked_list_sort(listnode* head, int (*cmp_func)(listnode*, listnode*))
+listnode* linked_list_sort(listnode* head, int (*cmp_func)(listnode*, listnode*), char* path)
 {
     listnode* current = head;
     // checks for error
@@ -18,7 +18,7 @@ listnode* linked_list_sort(listnode* head, int (*cmp_func)(listnode*, listnode*)
     listnode* new_head = NULL;
     listnode* new_current = new_head;
     // initialise the first element of the list
-    new_head = init_head(current->name);
+    new_head = init_head(current->name, path);
     new_current = new_head;
     current = current->next;
     while (current != NULL)

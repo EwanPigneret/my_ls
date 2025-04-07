@@ -10,6 +10,7 @@ int main(int argc, char** argv)
 {
     listnode* head_folders = (listnode*)my_malloc("head_folders", sizeof(listnode));
     char* flag = my_malloc("flag", sizeof(char) * 3);
+    char* path = "./";
     int index = 1;
     int val_flag = 0;
     //./my_ls
@@ -44,18 +45,18 @@ int main(int argc, char** argv)
                 // create a linked list with all the directory
                 if (head_folders->name == NULL)
                 {
-                    head_folders = init_head(argv[index]);
+                    head_folders = init_head(argv[index], path);
                 }
                 else
                 {
-                    insert_element(head_folders, argv[index]);
+                    insert_element(head_folders, argv[index], path);
                 }
                 index += 1;
             }
         }
         if (head_folders->name != NULL)
         {
-            print_folder(head_folders, detect_flag(flag));
+            print_folder(head_folders, detect_flag(flag), path);
         }
         // if no directory were found
         else

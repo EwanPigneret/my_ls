@@ -7,10 +7,10 @@
  * Head of the linked list with the folders, converted value of the flags
  */
 
-void print_folder(listnode* head_folder, int flag)
+void print_folder(listnode* head_folder, int flag, char* path)
 {
     // sort the folder by the appropriate order
-    head_folder = sort_folder(head_folder, flag);
+    head_folder = sort_folder(head_folder, flag, path);
     listnode* current = head_folder;
     int nb_files = 0;
     // if there's more than one directory
