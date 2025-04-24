@@ -20,6 +20,3 @@ fclean: clean
 
 .c.o:
 	$(COMPILER) $(FLAGS) -c $< -o $@ $(INCLUDE)
-
-remove :
-	$(shell find  . -name '._*' -exec rm {} \;)
