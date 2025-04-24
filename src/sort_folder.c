@@ -7,17 +7,17 @@
  * @return The head of the modified list
  */
 
-listnode* sort_folder(listnode* head_folder, int flag, char* path)
+listnode* sort_folder(listnode* head_folder, int flag)
 {
     if (linked_list_length(head_folder) > 1)
     {
         if (flag / 2)
         {
-            head_folder = linked_list_sort(head_folder, compare_modification, path);
+            head_folder = linked_list_sort(head_folder, compare_modification);
         }
         else
         {
-            head_folder = linked_list_sort(head_folder, compare_letter, path);
+            head_folder = linked_list_sort(head_folder, compare_letter);
         }
     }
     return head_folder;
