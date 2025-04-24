@@ -10,8 +10,16 @@
 void print_file(char* directory, int flag)
 {
     listnode* head = (listnode*)my_malloc("head", sizeof(listnode));
-    head->name = "\0";
-    char* path = concatenation_string(directory, "/");
+    head->name = "";
+    char* path = NULL;
+    if (directory[0] != '/')
+    {
+       path = concatenation_string(directory, "/", path);
+    }
+    else
+    {
+        path = directory;
+    }
     DIR* folder;
     struct dirent* entry;
     folder = opendir(directory);
@@ -40,12 +48,12 @@ void print_file(char* directory, int flag)
     // code compiled with -t
     if (flag / 2)
     {
-        head = linked_list_sort(head, compare_modification, path);
+        head = linked_list_sort(head, compare_modification);
     }
     // code not compiled with -t
     else
     {
-        head = linked_list_sort(head, compare_letter, path);
+        head = linked_list_sort(head, compare_letter);
     }
     print_linked_list(head);
     closedir(folder);
