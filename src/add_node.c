@@ -8,7 +8,7 @@
  * @return The head of the modified list
  */
 
-listnode* add_node(listnode* head, listnode* node, int (*cmp_func)(listnode*, listnode*))
+listnode* add_node(listnode* head, listnode* node, int (*cmp_func)(listnode*, listnode*), struct stat* modif_node)
 {
     listnode* current = head;
     listnode* newnode = NULL;
@@ -22,6 +22,7 @@ listnode* add_node(listnode* head, listnode* node, int (*cmp_func)(listnode*, li
     {
         newnode = (listnode*)my_malloc("newnode", sizeof(listnode));
         newnode->name = node->name;
+        newnode->last_modif = modif_node;
         tempnode = current->next;
         current->next = newnode;
         newnode->next = tempnode;
