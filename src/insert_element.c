@@ -11,14 +11,24 @@ listnode* insert_element(listnode* head, char* elem_name, char* path)
 {
     struct stat* stat_node = (struct stat*)my_malloc("stat_node", sizeof(struct stat));
     listnode* new_node = (listnode*)my_malloc("new_node", sizeof(listnode));
-    if (stat(concatenation_string(path, elem_name), stat_node) == -1)
+    new_node->name = elem_name;
+    if (elem_name[0] != '/')
+    {	    
+        elem_name = concatenation_string(path, elem_name, elem_name);
+    }
+    if (stat(elem_name, stat_node) == -1)
     {
         perror("stat node");
         exit(EXIT_FAILURE);
     }
-    new_node->name = elem_name;
-    new_node->last_modif = stat_node->st_mtim.tv_nsec;
+    new_node->last_modif = stat_node;
     listnode* current = head;
+    // gestion of an error
+    if (!strcmp(head->name, ""))
+    {
+        head = new_node;
+        return head;
+    }
     // goes to the end of the linked list
     while (current->next != NULL)
     {
