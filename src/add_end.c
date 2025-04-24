@@ -7,7 +7,7 @@
  * @return The head of the modified list
  */
 
-listnode* add_end(listnode* head, char* name)
+listnode* add_end(listnode* head, char* name, struct stat* modif_node)
 {
     listnode* current = head;
     listnode* newnode = NULL;
@@ -17,6 +17,7 @@ listnode* add_end(listnode* head, char* name)
     }
     newnode = (listnode*)my_malloc("newnode", sizeof(listnode));
     newnode->name = name;
+    newnode->last_modif = modif_node;
     current->next = newnode;
     newnode->next = NULL;
     return head;
