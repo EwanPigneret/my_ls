@@ -11,14 +11,21 @@
 int compare_modification(listnode* current, listnode* next)
 {
     // return which one has been modified first between the 2
-    if (current->last_modif < next->last_modif)
+    if (current->last_modif->st_mtime < next->last_modif->st_mtime)
     {
         return 1;
     }
-    // if they are equals sort the by alphabetical order
-    else if (current->last_modif == next->last_modif)
+    // if they are equals sort the by nanoseconds and if also equeals sort by alphabetical order
+    else if (current->last_modif->st_mtime == next->last_modif->st_mtime)
     {
-        return compare_letter(current, next);
+        if (current->last_modif->st_mtim.tv_nsec < next->last_modif->st_mtim.tv_nsec)
+        {
+            return 1;
+        }
+        else if (current->last_modif->st_mtim.tv_nsec == next->last_modif->st_mtim.tv_nsec)
+        {
+            return compare_letter(current, next);
+        }
     }
     return -1;
 }
